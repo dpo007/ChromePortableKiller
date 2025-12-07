@@ -130,21 +130,16 @@ For comprehensive Chrome management, combine this script with:
 
 ## Version History
 
-- **v1.1** (2025-12-06): Added delay parameters
+- **v1.1**: Added delay parameters
   - Optional startup delay via `-EnableDelay` switch
   - Configurable delay duration with `-DelayMinutes` parameter (default: 10 minutes)
   - Allows users time to launch portable Chrome after logon for better detection
 
-- **v1.0** (2025-12-06): Initial release
+- **v1.0**: Initial release
   - Process termination
   - File removal
   - Per-user installation cleanup
   - Action-based logging
-
-
-## Author
-
-**DPO007**
 
 ## License
 
