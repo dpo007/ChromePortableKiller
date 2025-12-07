@@ -19,9 +19,18 @@
     System-installed Chrome located under Program Files or Program Files (x86)
     is fully allowed and never modified.
 
+.PARAMETER DelayMinutes
+    Number of minutes to wait before enforcement begins. Default is 10 minutes.
+    Only takes effect when -EnableDelay is specified.
+
+.PARAMETER EnableDelay
+    When present, the script waits DelayMinutes before scanning for processes.
+    This gives users time to launch their portable Chrome instances after logon,
+    increasing the chance of detecting and terminating unauthorized Chrome processes.
+
 .NOTES
     Script Name: ChromePortableKiller.ps1
-    Version: 1.0
+    Version: 1.1
     Author: DPO
     Created: 2025-12-06
 
@@ -31,6 +40,19 @@
         - User must have rights to delete items within their own profile
         - C:\Temp is used for logging and will be created if missing
 #>
+
+param(
+    [int]$DelayMinutes = 10,
+    [switch]$EnableDelay
+)
+
+#------------------------------------------------------------
+# Optional startup delay
+#------------------------------------------------------------
+if ($EnableDelay.IsPresent -and $DelayMinutes -gt 0) {
+    $seconds = [int]($DelayMinutes * 60)
+    Start-Sleep -Seconds $seconds
+}
 
 #------------------------------------------------------------
 # Ensure log directory (C:\Temp)

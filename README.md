@@ -15,6 +15,14 @@ ChromePortableKiller is designed for deployment as a User Logon script via Group
 - 🔒 **System Protection**: Never modifies system-installed Chrome in Program Files
 - 📝 **Action Logging**: Creates logs only when actions are taken
 
+## Parameters
+
+- `DelayMinutes` (`int`, default: `10`)
+  - Number of minutes to wait before the script begins scanning for processes. Ignored unless `-EnableDelay` is specified.
+
+- `EnableDelay` (`switch`)
+  - When present, the script waits `DelayMinutes` before starting enforcement. This gives users time to launch their portable Chrome instances after logon, increasing the chance of detecting and terminating unauthorized Chrome processes.
+
 ## How It Works
 
 The script performs the following operations:
@@ -67,6 +75,12 @@ The script performs the following operations:
 ```powershell
 # Run the script manually (PowerShell as current user)
 .\ChromePortableKiller.ps1
+
+# Run with a 10-minute delay before enforcement
+.\ChromePortableKiller.ps1 -EnableDelay
+
+# Run with a custom delay (e.g., 2 minutes)
+.\ChromePortableKiller.ps1 -EnableDelay -DelayMinutes 2
 ```
 
 ## Logging
@@ -124,7 +138,7 @@ For comprehensive Chrome management, combine this script with:
 
 ## Author
 
-**DPO**
+**DPO007**
 
 ## License
 
