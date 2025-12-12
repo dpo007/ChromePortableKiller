@@ -1,4 +1,4 @@
-# ChromePortableKiller
+# Chrome Portable Killer
 
 A PowerShell script that detects, terminates, and removes unauthorized or portable versions of Google Chrome from user systems while preserving system-level installations.
 
